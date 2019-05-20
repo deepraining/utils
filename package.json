@@ -1,0 +1,85 @@
+{
+  "name": "@senntyou/utils",
+  "version": "0.1.0",
+  "description": "工具函数、快捷对象、工具集等",
+  "main": "lib/index.js",
+  "module": "lib/m.js",
+  "umd:main": "lib/umd.js",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/utils",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/senntyou/utils"
+  },
+  "keywords": [
+    "util",
+    "utils",
+    "tool",
+    "tools"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/utils/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "precommit": "npm run lint-staged",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write \"./**/*.{js,md,json}\"",
+    "eslint": "eslint \"./**/*.js\"",
+    "eslint:fix": "eslint \"./**/*.js\" --fix",
+    "flow": "flow",
+    "flow:check": "flow check",
+    "build": "rollup -c",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test-watch": "jest --watch --notify",
+    "test-cover": "jest --coverage",
+    "coverage": "npm run test-cover && opn coverage/lcov-report/index.html"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.3.1",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.4.0",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.1.3",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "flow-bin": "^0.94.0",
+    "husky": "^1.3.1",
+    "jest": "^24.3.1",
+    "lint-staged": "^8.1.0",
+    "opn-cli": "^4.0.0",
+    "prettier": "^1.15.3",
+    "rollup": "^1.4.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-json": "^3.1.0"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
