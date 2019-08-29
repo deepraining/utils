@@ -336,7 +336,7 @@ removeATarget(content)
 removeATarget('<a href="/" target=_blank>haha</a>')              // '<a href="/">haha</a>'
 ```
 
-### readableNumber：格式化为可读数字
+## readableNumber：格式化为可读数字
 
 `type: function`
 
@@ -345,10 +345,22 @@ readableNumber(num, group)
 ```
 
 - `@param/num`: `type: number` 待处理的数字
-- `@param/num`: `type: group` 分组，以多少个数字为一组，默认 3
+- `@param/group`: `type: number` 分组，以多少个数字为一组，默认 3
 - `@return`: `type: string`
 
 ```
 readableNumber(123456789)              // '123,456,789'
 readableNumber(123456789.123, 4)              // '1,2345,6789.123'
 ```
+
+## scrollTo：滚动元素到指定位置
+
+`type: function`
+
+```
+scrollTo({el, interval, y})
+```
+
+- `@param/el`: `type: dom` 容器元素，默认 `window`
+- `@param/interval`: `type: number` 滚动间隔，默认 20 毫秒
+- `@param/y`: `type: number` y 坐标位置，默认 0

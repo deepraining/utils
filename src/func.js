@@ -89,3 +89,31 @@ export const loadImages = (images, cb) => {
     img.onload = load;
   });
 };
+
+/**
+ * 滚动元素到指定位置
+ *
+ * @param el 元素，默认 window
+ * @param interval 滚动间隔，默认 20 毫秒
+ * @param y y 坐标位置，默认 0
+ */
+export const scrollTo = ({ el = window, interval = 20, y = 0 }) => {
+  const isWin = el === window;
+
+  const timer = setInterval(() => {
+    const scrollY = isWin ? el.scrollY : el.scrollTop;
+
+    if (Math.abs(scrollY - y) < 1) {
+      clearInterval(timer);
+      return;
+    }
+
+    console.log(scrollY, y);
+
+    const target =
+      scrollY > y
+        ? (scrollY - y) * 0.8 + y
+        : Math.ceil((y - scrollY) * 0.2) + scrollY;
+    el.scrollTo(0, target);
+  }, interval);
+};

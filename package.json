@@ -1,6 +1,6 @@
 {
   "name": "@senntyou/utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "工具函数、快捷对象、工具集等",
   "main": "lib/index.js",
   "module": "lib/m.js",
