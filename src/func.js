@@ -108,8 +108,6 @@ export const scrollTo = ({ el = window, interval = 20, y = 0 }) => {
       return;
     }
 
-    console.log(scrollY, y);
-
     const target =
       scrollY > y
         ? (scrollY - y) * 0.8 + y
