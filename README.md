@@ -143,6 +143,21 @@ makeUrlSearch(params)
 makeUrlSearch({key1: 1, key2: 2})                // 'key1=1&key2=2'
 ```
 
+## parseUrlSearch：parse url search
+
+`type: function`
+
+```
+const params = parseUrlSearch(search)
+```
+
+- `@param/search`: `type: string` 参数
+- `@return`: `type: {}` params
+
+```
+parseUrlSearch('?key1=1&key2=2')                 // {key1: 1, key2: 2}
+```
+
 ### posToDoc：元素距离文档顶部的位置信息
 
 `type: function`

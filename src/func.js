@@ -45,6 +45,32 @@ export const makeUrlSearch = params => {
 };
 
 /**
+ * parse url search
+ *
+ * @example
+ *
+ * ```
+ * (?)key1=1&key2=2 -> {key1: 1, key2: 2}
+ * ```
+ *
+ * @param search
+ * @returns {string}
+ */
+export const parseUrlSearch = search => {
+  const params = {};
+
+  if (search) {
+    const str = search.slice(0, 1) === '?' ? search.slice(1) : search;
+    str.split('&').forEach(item => {
+      const items = item.split('=');
+      params[items[0]] = items[1] || '';
+    });
+  }
+
+  return params;
+};
+
+/**
  * 元素距离文档顶部的位置信息
  *
  * {x, y}

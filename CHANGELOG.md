@@ -1,7 +1,8 @@
 # changelog
 
-## 0.1.1 [2019-08-29]
+## 0.1.1
 
+- 添加 `parseUrlSearch`
 - 添加 `scrollTo`
 
 ## 0.1.0
