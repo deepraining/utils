@@ -116,14 +116,24 @@ export const loadImages = (images, cb) => {
   });
 };
 
+// 用于记录上一次位置
+const scrollToLastTargetRecord = {
+  // id: target
+};
+let scrollToCount = 1;
 /**
  * 滚动元素到指定位置
  *
  * @param el 元素，默认 window
  * @param interval 滚动间隔，默认 20 毫秒
  * @param y y 坐标位置，默认 0
+ * @param onComplete 到达目标元素的回调函数
  */
-export const scrollTo = ({ el = window, interval = 20, y = 0 }) => {
+export const scrollTo = ({ el = window, interval = 20, y = 0, onComplete }) => {
+  const id = scrollToCount;
+  scrollToCount += 1;
+  scrollToLastTargetRecord[id] = -1;
+
   const isWin = el === window;
 
   const timer = setInterval(() => {
@@ -131,6 +141,7 @@ export const scrollTo = ({ el = window, interval = 20, y = 0 }) => {
 
     if (Math.abs(scrollY - y) < 1) {
       clearInterval(timer);
+      if (onComplete) onComplete();
       return;
     }
 
@@ -138,6 +149,16 @@ export const scrollTo = ({ el = window, interval = 20, y = 0 }) => {
       scrollY > y
         ? (scrollY - y) * 0.8 + y
         : Math.ceil((y - scrollY) * 0.2) + scrollY;
+
+    // 如果是向下滚动，元素不够高，无法到达元素位置，则需要此判断，否则会陷入死循环
+    if (scrollToLastTargetRecord[id] === target) {
+      clearInterval(timer);
+      if (onComplete) onComplete();
+      return;
+    }
+
+    scrollToLastTargetRecord[id] = target;
+
     el.scrollTo(0, target);
   }, interval);
 };

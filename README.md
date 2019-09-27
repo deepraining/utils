@@ -373,9 +373,10 @@ readableNumber(123456789.123, 4)              // '1,2345,6789.123'
 `type: function`
 
 ```
-scrollTo({el, interval, y})
+scrollTo({el, interval, y, onComplete})
 ```
 
 - `@param/el`: `type: dom` 容器元素，默认 `window`
 - `@param/interval`: `type: number` 滚动间隔，默认 20 毫秒
 - `@param/y`: `type: number` y 坐标位置，默认 0
+- `@param/onComplete`: `type: function` 到达目标元素的回调函数
