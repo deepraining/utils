@@ -136,22 +136,25 @@ export const scrollTo = ({ el = window, interval = 20, y = 0, onComplete }) => {
 
   const isWin = el === window;
 
+  const initScrollY = isWin ? el.scrollY : el.scrollTop;
+  // 是否是向下滚动
+  const isDown = y > initScrollY;
+
   const timer = setInterval(() => {
     const scrollY = isWin ? el.scrollY : el.scrollTop;
 
-    if (Math.abs(scrollY - y) < 1) {
+    if (!isDown && Math.abs(scrollY - y) < 1) {
       clearInterval(timer);
       if (onComplete) onComplete();
       return;
     }
 
-    const target =
-      scrollY > y
-        ? (scrollY - y) * 0.8 + y
-        : Math.ceil((y - scrollY) * 0.2) + scrollY;
+    const target = !isDown
+      ? (scrollY - y) * 0.8 + y
+      : Math.ceil((y - scrollY) * 0.2) + scrollY;
 
     // 如果是向下滚动，元素不够高，无法到达元素位置，则需要此判断，否则会陷入死循环
-    if (scrollToLastTargetRecord[id] === target) {
+    if (isDown && scrollToLastTargetRecord[id] === target) {
       clearInterval(timer);
       if (onComplete) onComplete();
       return;
