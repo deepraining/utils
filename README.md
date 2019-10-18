@@ -10,19 +10,19 @@ npm install @senntyou/utils --save
 import { isMobile, isWeiXin, ... } from '@senntyou/utils';
 ```
 
-### isMobile：是否是移动端
+## isMobile：是否是移动端
 
 `type: bool`
 
-### isWeiXin：是否是微信浏览器
+## isWeiXin：是否是微信浏览器
 
 `type: bool`
 
-### isIos：是否是 ios 终端
+## isIos：是否是 ios 终端
 
 `type: bool`
 
-### isMiniProgram：是否是微信小程序 web-view
+## isMiniProgram：是否是微信小程序 web-view
 
 `type: function`
 
@@ -34,7 +34,7 @@ if (isMiniProgram()) {
 }
 ```
 
-### getDate：获取一个时间对象
+## getDate：获取一个时间对象
 
 `type: function`
 
@@ -59,7 +59,7 @@ const {
 - `@param/d`: `type: Date` `default: 当前` 获取某个时刻的时间数据
 - `@return`: `type: {}` 时间数据
 
-### now：当前时间数据
+## now：当前时间数据
 
 ```
 const {
@@ -77,7 +77,7 @@ const {
 } = now;
 ```
 
-### refreshNow: 刷新当前时间数据
+## refreshNow: 刷新当前时间数据
 
 `type: function`
 
@@ -87,7 +87,7 @@ refreshNow(d)
 
 - `@param/d`: `type: Date` `default: 当前` 刷新到哪一个时间，默认是当前
 
-### urlParams：url 参数
+## urlParams：url 参数
 
 `type: {}`
 
@@ -100,7 +100,7 @@ refreshNow(d)
 }
 ```
 
-### fillZero：填充 0
+## fillZero：填充 0
 
 `type: function`
 
@@ -118,7 +118,7 @@ fillZero(1, 4)        // '0001'
 fillZero(12, 4)        // '0012'
 ```
 
-### reloadTitle：重新加载微信浏览器的标题，hack 在微信 webview 中无法修改 document.title 的情况
+## reloadTitle：重新加载微信浏览器的标题，hack 在微信 webview 中无法修改 document.title 的情况
 
 `type: function`
 
@@ -128,7 +128,7 @@ reloadTitle(title)
 
 - `@param/title`: `type: string` 标题
 
-### makeUrlSearch：make url params search
+## makeUrlSearch：make url params search
 
 `type: function`
 
@@ -158,7 +158,7 @@ const params = parseUrlSearch(search)
 parseUrlSearch('?key1=1&key2=2')                 // {key1: 1, key2: 2}
 ```
 
-### posToDoc：元素距离文档顶部的位置信息
+## posToDoc：元素距离文档顶部的位置信息
 
 `type: function`
 
@@ -173,7 +173,7 @@ posToDoc(el)
 posToDoc(el)                 // { x, y }
 ```
 
-### loadImages：加载图片快捷函数
+## loadImages：加载图片快捷函数
 
 `type: function`
 
@@ -190,7 +190,7 @@ loadImages([url1, url2, ...], () => {
 })
 ```
 
-### numOfDate：把日期转成数字
+## numOfDate：把日期转成数字
 
 `type: function`
 
@@ -205,7 +205,7 @@ numOfDate(date)
 numOfDate('2019-01-01')                // 20190101
 ```
 
-### numOfTime：把时间转成数字
+## numOfTime：把时间转成数字
 
 `type: function`
 
@@ -220,7 +220,7 @@ numOfTime(time)
 numOfTime('12:12:12')                  // 121212
 ```
 
-### numOfDateTime：把日期时间转成数字
+## numOfDateTime：把日期时间转成数字
 
 `type: function`
 
@@ -235,7 +235,7 @@ numOfDateTime(dateTime)
 numOfDateTime('2019-01-01 12:12:12')   // 20190101121212
 ```
 
-### distanceOfDates：返回两个日期之间的距离，以天计
+## distanceOfDates：返回两个日期之间的距离，以天计
 
 `type: function`
 
@@ -252,7 +252,7 @@ distanceOfDates('2019-01-01', '2019-01-10')      // 9
 distanceOfDates('2019-01-10', '2019-01-02')      // -8
 ```
 
-### readableTime：格式化为可读时间（n 秒前、n 分钟前、n 小时前、n 天前、n 个月前、n 年前）
+## readableTime：格式化为可读时间（n 秒前、n 分钟前、n 小时前、n 天前、n 个月前、n 年前）
 
 `type: function`
 
@@ -267,7 +267,7 @@ readableTime(time)
 readableTime('2019-01-01 01:01:01')              // 12 秒前
 ```
 
-### dateByInterval：获取距离输入日期指定时间间隔的日期
+## dateByInterval：获取距离输入日期指定时间间隔的日期
 
 `type: function`
 
@@ -284,7 +284,7 @@ dateByInterval(10, '2019-01-10')                 // '2019-01-20'
 dateByInterval(-10, '2019-01-22')                 // '2019-01-12'
 ```
 
-### relativeToToday：相对今天的日期（当天，过去，未来 & 相隔天数）
+## relativeToToday：相对今天的日期（当天，过去，未来 & 相隔天数）
 
 `type: function`
 
@@ -302,7 +302,7 @@ relativeToToday('2019-01-12')               // {type: 1, distance: 2}
 relativeToToday('2019-01-08')               // {type: -1, distance: 2}
 ```
 
-### validStartEndDate：检查结束日期是否大于等于开始日期
+## validStartEndDate：检查结束日期是否大于等于开始日期
 
 `type: function`
 
@@ -321,7 +321,7 @@ validStartEndDate('2019-01-10', '2019-01-12')    // true
 validStartEndDate('2019-01-10', '2019-01-08')    // false
 ```
 
-### htmlToText：提取富文本中的纯文字
+## htmlToText：提取富文本中的纯文字
 
 `type: function`
 
@@ -336,7 +336,7 @@ htmlToText(content)
 htmlToText('<p>haha</p>')              // 'haha'
 ```
 
-### removeATarget：移除 a 标签的 target=\_blank 属性
+## removeATarget：移除 a 标签的 target=\_blank 属性
 
 `type: function`
 
