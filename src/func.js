@@ -37,8 +37,7 @@ export const makeUrlSearch = params => {
   const urlParams = [];
 
   Object.keys(params).forEach(key => {
-    const value = params[key] ? encodeURIComponent(params[key]) : '';
-    urlParams.push(`${key}=${value}`);
+    urlParams.push(`${key}=${params[key] || ''}`);
   });
 
   return urlParams.join('&');
