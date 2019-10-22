@@ -125,19 +125,36 @@ let scrollToCount = 1;
  *
  * @param el 元素，默认 window
  * @param interval 滚动间隔，默认 20 毫秒
+ * @param step 每次减小的步长，默认 0.2
  * @param y y 坐标位置，默认 0
  * @param onComplete 到达目标元素的回调函数
+ * @param animate 是否使用动画，默认 true
  */
-export const scrollTo = ({ el = window, interval = 20, y = 0, onComplete }) => {
+export const scrollTo = ({
+  el = window,
+  interval = 20,
+  step = 0.2,
+  y = 0,
+  onComplete,
+  animate = !0,
+}) => {
   const id = scrollToCount;
   scrollToCount += 1;
   scrollToLastTargetRecord[id] = -1;
 
   const isWin = el === window;
+  const reverseStep = 1 - step;
 
   const initScrollY = isWin ? el.scrollY : el.scrollTop;
   // 是否是向下滚动
   const isDown = y > initScrollY;
+
+  // 不使用动画
+  if (!animate) {
+    el.scrollTo(0, y);
+    if (onComplete) onComplete();
+    return;
+  }
 
   const timer = setInterval(() => {
     const scrollY = isWin ? el.scrollY : el.scrollTop;
@@ -149,8 +166,8 @@ export const scrollTo = ({ el = window, interval = 20, y = 0, onComplete }) => {
     }
 
     const target = !isDown
-      ? (scrollY - y) * 0.8 + y
-      : Math.ceil((y - scrollY) * 0.2) + scrollY;
+      ? (scrollY - y) * reverseStep + y
+      : Math.ceil((y - scrollY) * step) + scrollY;
 
     // 如果是向下滚动，元素不够高，无法到达元素位置，则需要此判断，否则会陷入死循环
     if (isDown && scrollToLastTargetRecord[id] === target) {
