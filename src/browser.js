@@ -10,6 +10,4 @@ export const isWeiXin = lowerUa.indexOf('micromessenger') !== -1;
 // ios终端
 export const isIos = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 // 小程序 web-view
-export const isMiniProgram = () =>
-  // eslint-disable-next-line no-underscore-dangle
-  window.__wxjs_environment === 'miniprogram';
+export const isMiniProgram = lowerUa.indexOf('miniprogram') !== -1;

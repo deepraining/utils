@@ -24,15 +24,7 @@ import { isMobile, isWeiXin, ... } from '@senntyou/utils';
 
 ## isMiniProgram：是否是微信小程序 web-view
 
-`type: function`
-
-（因为 `window.__wxjs_environment` 值可能还未注入，所以使用方法动态判断）
-
-```
-if (isMiniProgram()) {
-  // 是微信小程序 web-view
-}
-```
+`type: bool`
 
 ## getDate：获取一个时间对象
 
@@ -382,3 +374,21 @@ scrollTo({el, interval, step, y, onComplete, animate})
 - `@param/y`: `type: number` y 坐标位置，默认 0
 - `@param/onComplete`: `type: function` 到达目标元素的回调函数
 - `@param/animate`: `type: bool` 是否使用动画，默认 true
+
+## safeFloat：安全的 float（保留 N 位小数）
+
+`type: function`
+
+```
+safeFloat(f, fixed)
+```
+
+- `@param/f`: `type: number` 待处理的数字
+- `@param/fixed`: `type: fixed` 小数位数，默认 2
+- `@return`: `type: float`
+
+```
+readableNumber(0.123456)                 // 0.12
+readableNumber(0.123456, 4)              // 0.1234
+readableNumber(123456789)                // 123456789
+```
