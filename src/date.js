@@ -17,8 +17,8 @@ export const getDate = date => {
   const d = date || new Date();
   const year = d.getFullYear(); // 当前4位年份
   const month = d.getMonth() + 1; // 当前月份 1-12
-  const day = d.getDate(); // 当前星期 0-6 (日-六)
-  const week = d.getDay(); // 当前几号
+  const day = d.getDate(); // 当前几号
+  const week = d.getDay(); // 当前星期 0-6 (日-六)
   const hours = d.getHours(); // 小时
   const minutes = d.getMinutes(); // 分钟
   const seconds = d.getSeconds(); // 秒
