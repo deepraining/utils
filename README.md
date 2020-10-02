@@ -313,6 +313,24 @@ validStartEndDate('2019-01-10', '2019-01-12')    // true
 validStartEndDate('2019-01-10', '2019-01-08')    // false
 ```
 
+## safeFloat：安全的 float（保留 N 位小数）
+
+`type: function`
+
+```
+safeFloat(f, fixed)
+```
+
+- `@param/f`: `type: number` 待处理的数字
+- `@param/fixed`: `type: fixed` 小数位数，默认 2
+- `@return`: `type: float`
+
+```
+readableNumber(0.123456)                 // 0.12
+readableNumber(0.123456, 4)              // 0.1234
+readableNumber(123456789)                // 123456789
+```
+
 ## htmlToText：提取富文本中的纯文字
 
 `type: function`
@@ -374,21 +392,3 @@ scrollTo({el, interval, step, y, onComplete, animate})
 - `@param/y`: `type: number` y 坐标位置，默认 0
 - `@param/onComplete`: `type: function` 到达目标元素的回调函数
 - `@param/animate`: `type: bool` 是否使用动画，默认 true
-
-## safeFloat：安全的 float（保留 N 位小数）
-
-`type: function`
-
-```
-safeFloat(f, fixed)
-```
-
-- `@param/f`: `type: number` 待处理的数字
-- `@param/fixed`: `type: fixed` 小数位数，默认 2
-- `@return`: `type: float`
-
-```
-readableNumber(0.123456)                 // 0.12
-readableNumber(0.123456, 4)              // 0.1234
-readableNumber(123456789)                // 123456789
-```

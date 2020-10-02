@@ -55,3 +55,12 @@ export const readableNumber = (num = 0, group = 3) => {
 
   return `${finalIntStr}${decimalStr ? `.${decimalStr}` : ''}`;
 };
+
+/**
+ * 安全的 float（保留N位小数）
+ *
+ * @param f
+ * @param fixed
+ * @returns {number}
+ */
+export const safeFloat = (f, fixed = 2) => parseFloat(f.toFixed(fixed));
