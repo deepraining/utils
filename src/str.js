@@ -6,17 +6,7 @@
  * @param content
  * @returns {string}
  */
-export const htmlToText = content => {
-  const regExp = />([^><]*?)</gi;
-  let result = '';
-  let matches;
-
-  while ((matches = regExp.exec(content))) {
-    if (matches[1]) result += matches[1];
-  }
-
-  return result;
-};
+export const htmlToText = content => content.replace(/<([^><]*?)>/g, '');
 
 /**
  * 移除 a 标签的 target=_blank 属性
